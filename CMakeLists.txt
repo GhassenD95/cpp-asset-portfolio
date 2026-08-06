@@ -15,4 +15,6 @@ add_executable(asset_portfolio main.cpp
         Option.cpp
         Option.h
         Crypto.cpp
-        Crypto.h)
+        Crypto.h
+        Portfolio.cpp
+        Portfolio.h)
