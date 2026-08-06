@@ -20,6 +20,7 @@ namespace trading {
         void displayAll() const;
         void displayByType(const std::string& type) const;
         void sortByValue() const;
+        void displaySummary() const;
         const Asset* findAsset(const std::string& symbol) const;
         size_t getAssetCount() const;
 

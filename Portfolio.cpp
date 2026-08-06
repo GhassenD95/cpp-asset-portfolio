@@ -5,6 +5,8 @@
 #include "Portfolio.h"
 
 #include <algorithm>
+#include <iomanip>
+#include <iostream>
 #include <iterator>
 #include <numeric>
 
@@ -117,4 +119,27 @@ const trading::Asset * trading::Portfolio::findAsset(const std::string &symbol) 
 
 size_t trading::Portfolio::getAssetCount() const {
     return assets_.size();
+}
+
+void trading::Portfolio::displaySummary() const {
+    std::cout << "=== Portfolio Summary ===\n";
+    std::cout << "Total Assets: " << getAssetCount() << "\n";
+    std::cout << std::fixed << std::setprecision(2)
+              << "Total Value: $" << getTotalValue() << "\n";
+    std::cout << std::fixed << std::setprecision(1)
+              << "Average Risk Score: " << getAverageRisk() << "/100\n";
+
+    const trading::Asset* riskiest = getRiskiestAsset();
+    if (riskiest != nullptr) {
+        std::cout << "Riskiest Asset: " << riskiest->getSymbol()
+                  << " (" << riskiest->getAssetType() << ")"
+                  << " - Risk: " << riskiest->calculateRiskScore() << "\n";
+    }
+
+    const trading::Asset* safest = getSafestAsset();
+    if (safest != nullptr) {
+        std::cout << "Safest Asset: " << safest->getSymbol()
+                  << " (" << safest->getAssetType() << ")"
+                  << " - Risk: " << safest->calculateRiskScore() << "\n";
+    }
 }
