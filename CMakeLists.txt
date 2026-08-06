@@ -6,4 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(-Wall -Wextra -Werror -pedantic)
-add_executable(asset_portfolio main.cpp)
+add_executable(asset_portfolio main.cpp
+        Asset.h
+        Stock.cpp
+        Stock.h
+        Bond.cpp
+        Bond.h
+        Option.cpp
+        Option.h
+        Crypto.cpp
+        Crypto.h)
